@@ -21,11 +21,12 @@ export default function SkipCard({ skipItem }: Props) {
   return (
     <div
       className={`flex items-center bg-gray-gray-800 border rounded-lg relative
-      shadow-sm md:flex-row w-full md:w-[390px] hover:bg-gray-700 bg-gray-800 h-[250px]  ${
+      shadow-sm hover:bg-gray-700 bg-gray-800 h-[250px]  ${
         state.selected.id && state.selected.id === skipItem.id
           ? 'border-blue-500 border-2'
           : 'border-gray-700'
       } `}
+      data-testid="card"
     >
       <div className="flex flex-col px-2 py-4 justify-between rounded-lg w-1/2 h-full bg-[url('./image.png')] relative">
         <div className="z-50 flex w-full">
@@ -51,7 +52,7 @@ export default function SkipCard({ skipItem }: Props) {
             <div className="flex gap-x-1 bg-black items-center rounded-full p-[3px]">
               <DangerIcon />
               <span className="text-xs text-start text-red-500 font-semibold mt-[-2px] flex">
-                Not suitable for heavy waste
+                Not for heavy waste
               </span>
             </div>
           )}
@@ -65,8 +66,8 @@ export default function SkipCard({ skipItem }: Props) {
             <h1 className="text-md md:text-xl font-bold">
               {skipItem.size} Yard Skip
             </h1>
-            <div className="flex items-center bg-blue-500 rounded-full px-2 py-0">
-              <span className="text-xs font-semibold">
+            <div className="flex items-center bg-blue-500 rounded-full px-1 py-0">
+              <span className="text-[10px] font-semibold">
                 {skipItem.size} {skipItem.size > 1 ? 'Yards' : 'Yard'}
               </span>
             </div>
@@ -86,7 +87,7 @@ export default function SkipCard({ skipItem }: Props) {
             <span className="text-sm text-gray-400"> / per week</span>
           </p>
           <button
-            className={`text-white rounded-full px-4 py-2 shadow-lg w-40 ${
+            className={`text-white rounded-full px-2 md:px-4 py-2 shadow-lg ${
               state.selected.id && state.selected.id === skipItem.id
                 ? 'bg-blue-500 '
                 : 'bg-zinc-600 border-gray-500 border'
@@ -101,7 +102,7 @@ export default function SkipCard({ skipItem }: Props) {
       </div>
       {!skipItem.allows_heavy_waste && (
         <div
-          className="absolute inset-0 rounded-lg hover:bg-transparent bg-black 
+          className="absolute inset-0 rounded-lg hover:bg-transparent bg-black
         bg-opacity-45 pointer-events-none transition-opacity"
         ></div>
       )}
