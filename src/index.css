@@ -6,6 +6,8 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  max-width: 1536px;
+  margin: 0 auto;
 
   color: rgba(255, 255, 255, 0.87);
   background-color: #213547;

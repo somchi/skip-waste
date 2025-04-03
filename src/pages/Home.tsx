@@ -29,24 +29,34 @@ const HomePage = () => {
     };
   }, []);
   return (
-    <div className="max-w-screen-2xl w-full flex flex-col gap-y-8">
+    <div className=" w-full flex flex-col gap-y-8 p-4 md:p-8">
       <div className="flex flex-col justify-start gap-2">
-        <h1 className="text-3xl font-bold text-start">Choose Your Skip Size</h1>
+        <h1 className="text-3xl font-bold text-start" data-testid="title">
+          Choose Your Skip Size
+        </h1>
         <h2 className="text-xl font-semibold text-gray-400 text-start">
           Select the skip size that best suits your needs
         </h2>
       </div>
-      <div className="flex flex-wrap gap-4">
+      <div className="grid">
         {loading ? (
-          <div className="size-10 mt-12 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
+          <div
+            data-testid="loaders"
+            className="size-10 mt-12 rounded-full border-2 border-blue-500 border-t-transparent animate-spin"
+          />
         ) : error !== '' ? (
           <p></p>
         ) : data.length === 0 ? (
           <div></div>
         ) : (
-          data.map((item: Skip, ind: number) => (
-            <SkipCard skipItem={item} key={ind} />
-          ))
+          <div
+            data-testid="content"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+          >
+            {data.map((item: Skip, ind: number) => (
+              <SkipCard skipItem={item} key={ind} />
+            ))}
+          </div>
         )}
       </div>
     </div>
